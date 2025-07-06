@@ -1,4 +1,106 @@
 /*  import google fonts */
+
+/* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.preloader-content {
+  text-align: center;
+}
+
+.preloader-logo {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.preloader-logo span {
+  color: rgb(181, 0, 252);
+}
+
+.preloader-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.preloader-ring__circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: preloader-ring 2s linear infinite;
+}
+
+.preloader-ring__circle:nth-child(1) {
+  animation-delay: -0.5s;
+}
+
+.preloader-ring__circle:nth-child(2) {
+  animation-delay: -1s;
+}
+
+.preloader-ring__circle:nth-child(3) {
+  animation-delay: -1.5s;
+}
+
+@keyframes preloader-ring {
+  0% {
+      transform: rotate(0deg);
+      box-shadow: 0 0 0 0 rgba(181, 0, 252, 0.7);
+  }
+  50% {
+      transform: rotate(180deg);
+      box-shadow: 0 0 20px 10px rgba(181, 0, 252, 0.3);
+  }
+  100% {
+      transform: rotate(360deg);
+      box-shadow: 0 0 0 0 rgba(181, 0, 252, 0.7);
+  }
+}
+
+.preloader-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: preloader-pulse 2s infinite;
+}
+
+@keyframes preloader-pulse {
+  0%, 100% {
+      opacity: 0.6;
+  }
+  50% {
+      opacity: 1;
+  }
+}
+
+/* Hide content during preload */
+body.preload-active #content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap");
 
 * {
@@ -58,7 +160,7 @@ section .title {
   font-size: 40px;
   font-weight: 500;
   margin-bottom: 60px;
-  padding-bottom: 20px;
+  padding-bottom: 28px;
   font-family: "Ubuntu", sans-serif;
 }
 section .title::before {
@@ -270,7 +372,7 @@ section .title::after {
 .interests .title::after,
 .projects .title::after {
   background: #111;
-  content: "Things I Love";
+  content: "Proof of Passion";
 }
 .interests .serv-content .card {
   width: calc(33% - 20px);
@@ -303,6 +405,99 @@ section .title::after {
   font-weight: 500;
   margin: 10px 0 7px 0;
 }
+
+#ach1{
+width: 50%;
+border-radius: 50%;
+border: 5px solid rgb(181, 0, 252);
+transition: all 0.3s ease;
+ 
+}
+
+.interests .serv-content .card .box img {
+  width: 150px; 
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid rgb(181, 0, 252);
+  transition: all 0.3s ease;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+
+
+/* Terminal GIF styles */
+.terminal-gif-container {
+  margin-bottom: 30px;
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.terminal-gif-container {
+  aspect-ratio: 16/9; /* Match your GIF's aspect ratio */
+  background: #000; /* Background color while loading */
+  overflow: hidden;
+}
+.terminal-gif {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Adjust the scrolling logos position */
+.scrolling-logos {
+  margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .terminal-gif-container {
+      margin-top: 30px;
+  }
+  
+  .scrolling-logos {
+      margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal-gif-container {
+    aspect-ratio: 16/9;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
+
+
+@supports not (aspect-ratio: 16/9) {
+  .terminal-gif-container {
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      position: relative;
+  }
+  .terminal-gif {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 /* skills section styling */
 
@@ -378,6 +573,151 @@ section .title::after {
 .skills-content .right .mysql::before {
   width: 70%;
 }
+
+.skills_ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* body{
+    /* margin: 0; */
+    /* background-color: #000; */
+    /* color: #eee; */
+    /* font-family: Poppins; */
+    /* font-size: 12px;
+} */ */
+
+.des{
+  font-size: 12px;
+  font-family: Poppins;
+}
+a{
+    text-decoration: none;
+}
+header{
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+header a{
+    color: #eee;
+    margin-right: 40px;
+}
+
+
+
+
+/* Infinite Scrolling Logos */
+.scrolling-logos {
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0;
+  /* border-top: 1px solid rgba(0,0,0,0.1); */
+  /* border-bottom: 1px solid rgba(0,0,0,0.1); */
+}
+
+.scrolling-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLogos 14s linear infinite;
+}
+
+.logo {
+  flex: 0 0 auto;
+  margin: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.logo img {
+  height: 50px;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Gradient edges */
+.scrolling-logos::before,
+.scrolling-logos::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+}
+
+.scrolling-logos::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.scrolling-logos::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo {
+    margin: 0 20px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .scrolling-logos::before,
+  .scrolling-logos::after {
+    width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    margin: 0 15px;
+  }
+  
+  .logo img {
+    height: 30px;
+  }
+  
+  .scrolling-logos {
+    padding: 20px 0;
+  }
+}
+
+
+
+
+
 
 /* projects section styling */
 .projects .title::after {

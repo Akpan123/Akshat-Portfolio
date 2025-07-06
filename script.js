@@ -1,3 +1,33 @@
+// Preloader functionality
+window.addEventListener("load", function () {
+  const preloader = document.getElementById("preloader");
+  const content = document.getElementById("content");
+
+  // Show content immediately but keep it hidden visually
+  content.style.display = "block";
+
+  // Wait 1.5 seconds to simulate loading
+  setTimeout(function () {
+    // Fade out preloader
+    preloader.style.opacity = "0";
+    preloader.style.visibility = "hidden";
+
+    // Fade in content
+    content.style.opacity = "1";
+    content.style.visibility = "visible";
+
+    // Remove preload-active class for transitions
+    document.body.classList.remove("preload-active");
+
+    // Remove preloader from DOM after animation completes
+    setTimeout(function () {
+      preloader.style.display = "none";
+    }, 800);
+  }, 1500);
+});
+
+
+
 $(document).ready(function () {
   $(window).scroll(function () {
     // sticky navbar on scroll script
@@ -37,14 +67,35 @@ $(document).ready(function () {
   var typed = new Typed(".typing", {
     strings: ["Learner;", "Developer;", "Student;", "Coder;"],
     typeSpeed: 100,
-    backSpeed: 60,
+    backSpeed: 100,
     loop: true,
   });
 
   var typed = new Typed(".typing-2", {
     strings: ["Learner;", "Developer;", "Student;", "Coder;"],
-    typeSpeed: 0,
-    backSpeed: 0,
+    typeSpeed: 110,
+    backSpeed: 80,
     loop: true,
   });
 });
+
+
+
+
+
+
+
+// Ensure smooth animation without jank
+function optimizeAnimation() {
+  const scrollingTrack = document.querySelector('.scrolling-track');
+  scrollingTrack.style.willChange = 'transform';
+  scrollingTrack.style.backfaceVisibility = 'hidden';
+}
+
+// Initialize when page loads
+window.addEventListener('load', optimizeAnimation);
+
+
+
+
+
