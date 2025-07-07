@@ -731,6 +731,7 @@ header a{
   text-align: center;
   border-radius: 6px;
   padding: 20px 25px;
+  margin-bottom: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
